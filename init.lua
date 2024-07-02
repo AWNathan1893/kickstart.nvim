@@ -790,6 +790,7 @@ require('lazy').setup({
       vim.cmd.hi 'Comment gui=none'
     end,
   },
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -863,13 +864,12 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
-  {
+  { -- Vimtex
     'lervag/vimtex',
     lazy = false, -- we don't want to lazy load VimTeX
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
-      -- VimTeX configuration goes here, e.g.
-      --  vim.g.vimtex_view_method = 'zathura'
+      -- VimTeX configuration in plugin and ftplugin/tex as Vimscript is used
     end,
   },
 
@@ -936,6 +936,10 @@ require('luasnip.loaders.from_lua').lazy_load { paths = '~/.config/nvim/LuaSnip/
 -- Keymap to lazy load snippets, so that snippets can be changed while working on files.
 
 vim.keymap.set('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})<CR>')
+
+-- Disable Treesitter highlighting for tex files, Vimtex will handle that
+
+vim.api.nvim_create_autocmd({ 'FileType' }, { pattern = 'tex', command = 'TSBufDisable highlight' })
 
 -- Folding
 vim.opt.foldmethod = 'expr'
