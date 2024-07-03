@@ -919,23 +919,26 @@ require('lazy').setup({
 
 -- LuaSnip
 
-require('luasnip').config.set_config { -- Setting LuaSnip config
+-- require('luasnip').config.set_config { -- Setting LuaSnip config
+--
+--   -- Enable autotriggered snippets
+--   enable_autosnippets = true,
+--
+--   -- Use Tab (or some other key if you prefer) to trigger visual selection
+--   store_selection_keys = '<Tab>',
+--
+--   -- For repeated insert nodes to be updated simultaneously
+--   update_events = 'TextChanged, TextChangedI',
+-- }
+--
+-- require('luasnip.loaders.from_lua').lazy_load { paths = '~/.config/nvim/LuaSnip/' }
+--
+-- -- Keymap to lazy load snippets, so that snippets can be changed while working on files.
+--
+-- vim.keymap.set('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})<CR>')
+--
 
-  -- Enable autotriggered snippets
-  enable_autosnippets = true,
-
-  -- Use Tab (or some other key if you prefer) to trigger visual selection
-  store_selection_keys = '<Tab>',
-
-  -- For repeated insert nodes to be updated simultaneously
-  update_events = 'TextChanged, TextChangedI',
-}
-
-require('luasnip.loaders.from_lua').lazy_load { paths = '~/.config/nvim/LuaSnip/' }
-
--- Keymap to lazy load snippets, so that snippets can be changed while working on files.
-
-vim.keymap.set('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})<CR>')
+require 'plugins/LuaSnip'
 
 -- Disable Treesitter highlighting for tex files, Vimtex will handle that
 

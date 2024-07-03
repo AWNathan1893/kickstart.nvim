@@ -13,7 +13,7 @@
 let g:vimtex_mappings_enabled = 0
 
 " Disable insert mode mappings (in favor of a dedicated snippet engine)
-let g:vimtex_imaps_enabled = 0
+" let g:vimtex_imaps_enabled = 0
 
 " Disable completion
 " let g:vimtex_complete_enabled = 0

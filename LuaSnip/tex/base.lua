@@ -11,3 +11,10 @@ local rep = require('luasnip.extras').rep
 
 local helpers = require 'luasnip-helper-funcs'
 local get_visual = helpers.get_visual
+
+return {
+
+  s({ trig = ';a', snippetType = 'autosnippet' }, {
+    t '\\alpha',
+  }),
+}
