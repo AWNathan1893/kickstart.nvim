@@ -14,7 +14,7 @@ end
 return {
   -- LEFT/RIGHT PARENTHESES
   s(
-    { trig = '([^%a])l%(', regTrig = true, wordTrig = false, snippetType = 'snippet' },
+    { trig = '([^%a])l%(', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\left(<>\\right)', {
       f(function(_, snip)
         return snip.captures[1]
@@ -24,7 +24,7 @@ return {
   ),
   -- LEFT/RIGHT SQUARE BRACES
   s(
-    { trig = '([^%a])l%[', regTrig = true, wordTrig = false, snippetType = 'snippet' },
+    { trig = '([^%a])l%[', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\left[<>\\right]', {
       f(function(_, snip)
         return snip.captures[1]
@@ -34,7 +34,7 @@ return {
   ),
   -- LEFT/RIGHT CURLY BRACES
   s(
-    { trig = '([^%a])l%{', regTrig = true, wordTrig = false, snippetType = 'snippet' },
+    { trig = '([^%a])l%{', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\left\\{<>\\right\\}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -44,7 +44,7 @@ return {
   ),
   -- BIG PARENTHESES
   s(
-    { trig = '([^%a])b%(', regTrig = true, wordTrig = false, snippetType = 'snippet' },
+    { trig = '([^%a])b%(', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\big(<>\\big)', {
       f(function(_, snip)
         return snip.captures[1]
@@ -54,7 +54,7 @@ return {
   ),
   -- BIG SQUARE BRACES
   s(
-    { trig = '([^%a])b%[', regTrig = true, wordTrig = false, snippetType = 'snippet' },
+    { trig = '([^%a])b%[', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\big[<>\\big]', {
       f(function(_, snip)
         return snip.captures[1]
@@ -64,7 +64,7 @@ return {
   ),
   -- BIG CURLY BRACES
   s(
-    { trig = '([^%a])b%{', regTrig = true, wordTrig = false, snippetType = 'snippet' },
+    { trig = '([^%a])b%{', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\big\\{<>\\big\\}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -74,7 +74,7 @@ return {
   ),
   -- ESCAPED CURLY BRACES
   s(
-    { trig = '([^%a])\\%{', regTrig = true, wordTrig = false, snippetType = 'snippet', priority = 2000 },
+    { trig = '([^%a])\\%{', regTrig = true, wordTrig = false, snippetType = 'autosnippet', priority = 2000 },
     fmta('<>\\{<>\\}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -84,7 +84,7 @@ return {
   ),
   -- LATEX QUOTATION MARK
   s(
-    { trig = '``', snippetType = 'snippet' },
+    { trig = '``', snippetType = 'autosnippet' },
     fmta("``<>''", {
       d(1, get_visual),
     })
