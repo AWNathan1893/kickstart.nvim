@@ -1,104 +1,104 @@
 return {
-  s({ trig = ';a', snippetType = 'snippet' }, {
+  s({ trig = ';a', snippetType = 'autosnippet' }, {
     t '\\alpha',
   }),
-  s({ trig = ';b', snippetType = 'snippet' }, {
+  s({ trig = ';b', snippetType = 'autosnippet' }, {
     t '\\beta',
   }),
-  s({ trig = ';g', snippetType = 'snippet' }, {
+  s({ trig = ';g', snippetType = 'autosnippet' }, {
     t '\\gamma',
   }),
-  s({ trig = ';G', snippetType = 'snippet' }, {
+  s({ trig = ';G', snippetType = 'autosnippet' }, {
     t '\\Gamma',
   }),
-  s({ trig = ';d', snippetType = 'snippet' }, {
+  s({ trig = ';d', snippetType = 'autosnippet' }, {
     t '\\delta',
   }),
-  s({ trig = ';D', snippetType = 'snippet' }, {
+  s({ trig = ';D', snippetType = 'autosnippet' }, {
     t '\\Delta',
   }),
-  s({ trig = ';e', snippetType = 'snippet' }, {
+  s({ trig = ';e', snippetType = 'autosnippet' }, {
     t '\\epsilon',
   }),
-  s({ trig = ';ve', snippetType = 'snippet' }, {
+  s({ trig = ';ve', snippetType = 'autosnippet' }, {
     t '\\varepsilon',
   }),
-  s({ trig = ';z', snippetType = 'snippet' }, {
+  s({ trig = ';z', snippetType = 'autosnippet' }, {
     t '\\zeta',
   }),
-  s({ trig = ';h', snippetType = 'snippet' }, {
+  s({ trig = ';h', snippetType = 'autosnippet' }, {
     t '\\eta',
   }),
-  s({ trig = ';o', snippetType = 'snippet' }, {
+  s({ trig = ';o', snippetType = 'autosnippet' }, {
     t '\\theta',
   }),
-  s({ trig = ';vo', snippetType = 'snippet' }, {
+  s({ trig = ';vo', snippetType = 'autosnippet' }, {
     t '\\vartheta',
   }),
-  s({ trig = ';O', snippetType = 'snippet' }, {
+  s({ trig = ';O', snippetType = 'autosnippet' }, {
     t '\\Theta',
   }),
-  s({ trig = ';k', snippetType = 'snippet' }, {
+  s({ trig = ';k', snippetType = 'autosnippet' }, {
     t '\\kappa',
   }),
-  s({ trig = ';l', snippetType = 'snippet' }, {
+  s({ trig = ';l', snippetType = 'autosnippet' }, {
     t '\\lambda',
   }),
-  s({ trig = ';L', snippetType = 'snippet' }, {
+  s({ trig = ';L', snippetType = 'autosnippet' }, {
     t '\\Lambda',
   }),
-  s({ trig = ';m', snippetType = 'snippet' }, {
+  s({ trig = ';m', snippetType = 'autosnippet' }, {
     t '\\mu',
   }),
-  s({ trig = ';n', snippetType = 'snippet' }, {
+  s({ trig = ';n', snippetType = 'autosnippet' }, {
     t '\\nu',
   }),
-  s({ trig = ';x', snippetType = 'snippet' }, {
+  s({ trig = ';x', snippetType = 'autosnippet' }, {
     t '\\xi',
   }),
-  s({ trig = ';X', snippetType = 'snippet' }, {
+  s({ trig = ';X', snippetType = 'autosnippet' }, {
     t '\\Xi',
   }),
-  s({ trig = ';i', snippetType = 'snippet' }, {
+  s({ trig = ';i', snippetType = 'autosnippet' }, {
     t '\\pi',
   }),
-  s({ trig = ';I', snippetType = 'snippet' }, {
+  s({ trig = ';I', snippetType = 'autosnippet' }, {
     t '\\Pi',
   }),
-  s({ trig = ';r', snippetType = 'snippet' }, {
+  s({ trig = ';r', snippetType = 'autosnippet' }, {
     t '\\rho',
   }),
-  s({ trig = ';s', snippetType = 'snippet' }, {
+  s({ trig = ';s', snippetType = 'autosnippet' }, {
     t '\\sigma',
   }),
-  s({ trig = ';S', snippetType = 'snippet' }, {
+  s({ trig = ';S', snippetType = 'autosnippet' }, {
     t '\\Sigma',
   }),
-  s({ trig = ';t', snippetType = 'snippet' }, {
+  s({ trig = ';t', snippetType = 'autosnippet' }, {
     t '\\tau',
   }),
-  s({ trig = ';f', snippetType = 'snippet' }, {
+  s({ trig = ';f', snippetType = 'autosnippet' }, {
     t '\\phi',
   }),
-  s({ trig = ';vf', snippetType = 'snippet' }, {
+  s({ trig = ';vf', snippetType = 'autosnippet' }, {
     t '\\varphi',
   }),
-  s({ trig = ';F', snippetType = 'snippet' }, {
+  s({ trig = ';F', snippetType = 'autosnippet' }, {
     t '\\Phi',
   }),
-  s({ trig = ';c', snippetType = 'snippet' }, {
+  s({ trig = ';c', snippetType = 'autosnippet' }, {
     t '\\chi',
   }),
-  s({ trig = ';p', snippetType = 'snippet' }, {
+  s({ trig = ';p', snippetType = 'autosnippet' }, {
     t '\\psi',
   }),
-  s({ trig = ';P', snippetType = 'snippet' }, {
+  s({ trig = ';P', snippetType = 'autosnippet' }, {
     t '\\Psi',
   }),
-  s({ trig = ';w', snippetType = 'snippet' }, {
+  s({ trig = ';w', snippetType = 'autosnippet' }, {
     t '\\omega',
   }),
-  s({ trig = ';W', snippetType = 'snippet' }, {
+  s({ trig = ';W', snippetType = 'autosnippet' }, {
     t '\\Omega',
   }),
 }

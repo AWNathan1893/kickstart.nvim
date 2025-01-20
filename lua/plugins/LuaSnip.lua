@@ -1,6 +1,6 @@
 vim.cmd [[
   " Expand
-  imap <silent><expr> <Tab> luasnip#expandable() ? '<Plug>luasnip-expand-snippet' : '<Tab>'
+"  imap <silent><expr> <Tab> luasnip#expandable() ? '<Plug>luasnip-expand-snippet' : '<Tab>'
 
   " Jump forward
   imap <silent><expr> jk luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : 'jk'
@@ -52,7 +52,7 @@ ls.config.set_config {
   -- Allow autotrigger snippets
   enable_autosnippets = true,
   -- For equivalent of UltiSnips visual selection
-  store_selection_keys = '<Tab>',
+  store_selection_keys = '<C-v>',
   -- Event on which to check for exiting a snippet's region
   region_check_events = 'InsertEnter',
   delete_check_events = 'InsertLeave',

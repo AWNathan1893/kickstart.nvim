@@ -14,7 +14,7 @@ local get_visual = helpers.get_visual
 
 return {
 
-  s({ trig = ';a', snippetType = 'autosnippet' }, {
+  s({ trig = ';a', snippetType = 'snippet' }, {
     t '\\alpha',
   }),
 }

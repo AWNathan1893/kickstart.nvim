@@ -26,7 +26,7 @@ end
 return {
   -- TYPEWRITER i.e. \texttt
   s(
-    { trig = '([^%a])tt', regTrig = true, wordTrig = false, snippetType = 'snippet', priority = 2000 },
+    { trig = '([^%a])tt', regTrig = true, wordTrig = false, snippetType = 'autosnippet', priority = 2000 },
     fmta('<>\\texttt{<>}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -37,7 +37,7 @@ return {
   ),
   -- ITALIC i.e. \textit
   s(
-    { trig = '([^%a])tii', regTrig = true, wordTrig = false, snippetType = 'snippet' },
+    { trig = '([^%a])tii', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\textit{<>}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -47,15 +47,35 @@ return {
   ),
   -- BOLD i.e. \textbf
   s(
-    { trig = 'tbb', snippetType = 'snippet' },
+    { trig = 'tbb', snippetType = 'autosnippet' },
     fmta('\\textbf{<>}', {
       d(1, get_visual),
     })
   ),
   -- MATH ROMAN i.e. \mathrm
   s(
-    { trig = '([^%a])rmm', regTrig = true, wordTrig = false, snippetType = 'snippet' },
+    { trig = '([^%a])mrm', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\mathrm{<>}', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      d(1, get_visual),
+    })
+  ),
+  -- MATH SCRIPT i.e. \mathscr
+  s(
+    { trig = '([^%a])msc', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('<>\\mathscr{<>}', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      d(1, get_visual),
+    })
+  ),
+  -- MATH FRAKTUR i.e. \mathfrak
+  s(
+    { trig = '([^%a])mfr', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('<>\\mathfrak{<>}', {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -64,7 +84,7 @@ return {
   ),
   -- MATH CALIGRAPHY i.e. \mathcal
   s(
-    { trig = '([^%a])mcc', regTrig = true, wordTrig = false, snippetType = 'snippet' },
+    { trig = '([^%a])mcc', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\mathcal{<>}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -74,7 +94,7 @@ return {
   ),
   -- MATH BOLDFACE i.e. \mathbf
   s(
-    { trig = '([^%a])mbf', regTrig = true, wordTrig = false, snippetType = 'snippet' },
+    { trig = '([^%a])mbf', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\mathbf{<>}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -84,7 +104,7 @@ return {
   ),
   -- MATH BLACKBOARD i.e. \mathbb
   s(
-    { trig = '([^%a])mbb', regTrig = true, wordTrig = false, snippetType = 'snippet' },
+    { trig = '([^%a])mbb', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\mathbb{<>}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -94,7 +114,7 @@ return {
   ),
   -- REGULAR TEXT i.e. \text (in math environments)
   s(
-    { trig = '([^%a])tee', regTrig = true, wordTrig = false, snippetType = 'snippet' },
+    { trig = '([^%a])tee', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\text{<>}', {
       f(function(_, snip)
         return snip.captures[1]
