@@ -83,23 +83,6 @@ return {
     ),
     { condition = line_begin }
   ),
-  -- SPLIT EQUATION
-  s(
-    { trig = 'ss', snippetType = 'autosnippet' },
-    fmta(
-      [[
-        \begin{equation*}
-            \begin{split}
-                <>
-            \end{split}
-        \end{equation*}
-      ]],
-      {
-        d(1, get_visual),
-      }
-    ),
-    { condition = line_begin }
-  ),
   -- ALIGN
   s(
     { trig = 'al', snippetType = 'autosnippet' },

@@ -87,36 +87,14 @@ return {
     }),
     { condition = tex.in_mathzone }
   ),
-  -- ZERO SUBSCRIPT SHORTCUT
-  s(
-    { trig = '([%a%)%]%}])00', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
-    fmta('<>_{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      t '0',
-    }),
-    { condition = tex.in_mathzone }
-  ),
   -- MINUS ONE SUPERSCRIPT SHORTCUT
   s(
     { trig = '([%a%)%]%}])11', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
-    fmta('<>_{<>}', {
+    fmta('<>^{<>}', {
       f(function(_, snip)
         return snip.captures[1]
       end),
       t '-1',
-    }),
-    { condition = tex.in_mathzone }
-  ),
-  -- J SUBSCRIPT SHORTCUT (since jk triggers snippet jump forward)
-  s(
-    { trig = '([%a%)%]%}])JJ', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>_{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      t 'j',
     }),
     { condition = tex.in_mathzone }
   ),
@@ -153,48 +131,40 @@ return {
     }),
     { condition = tex.in_mathzone }
   ),
-  -- VECTOR, i.e. \vec
+  -- BMATRIX, i.e. \bmatrix env
   s(
-    { trig = '([^%a])vv', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>\\vec{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      d(1, get_visual),
-    }),
+    { trig = '([^%a])bm', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
+    fmta(
+      [[
+      <>\begin{bmatrix}
+      <>
+      \end{bmatrix}
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+      }
+    ),
     { condition = tex.in_mathzone }
   ),
-  -- DEFAULT UNIT VECTOR WITH SUBSCRIPT, i.e. \unitvector_{}
+  -- PMATRIX, i.e. \pmatrix env
   s(
-    { trig = '([^%a])ue', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>\\unitvector_{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      d(1, get_visual),
-    }),
-    { condition = tex.in_mathzone }
-  ),
-  -- UNIT VECTOR WITH HAT, i.e. \uvec{}
-  s(
-    { trig = '([^%a])uv', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>\\uvec{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      d(1, get_visual),
-    }),
-    { condition = tex.in_mathzone }
-  ),
-  -- MATRIX, i.e. \vec
-  s(
-    { trig = '([^%a])mt', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>\\mat{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      d(1, get_visual),
-    }),
+    { trig = '([^%a])pm', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
+    fmta(
+      [[
+      <>\begin{pmatrix}
+      <>
+      \end{pmatrix}
+      ]],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+      }
+    ),
     { condition = tex.in_mathzone }
   ),
   -- FRACTION
@@ -206,17 +176,6 @@ return {
       end),
       d(1, get_visual),
       i(2),
-    }),
-    { condition = tex.in_mathzone }
-  ),
-  -- ANGLE
-  s(
-    { trig = '([^%a])gg', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
-    fmta('<>\\ang{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      d(1, get_visual),
     }),
     { condition = tex.in_mathzone }
   ),
@@ -254,10 +213,10 @@ return {
     }),
     { condition = tex.in_mathzone }
   ),
-  -- LOGARITHM WITH BASE SUBSCRIPT
+  -- LOGARITHM
   s(
     { trig = '([^%a%\\])ll', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>\\log_{<>}', {
+    fmta('<>\\log\\left({<>}\\right)', {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -265,75 +224,14 @@ return {
     }),
     { condition = tex.in_mathzone }
   ),
-  -- DERIVATIVE with denominator only
+  -- EXPONENTIAL
   s(
-    { trig = '([^%a])dV', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>\\dvOne{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      d(1, get_visual),
-    }),
-    { condition = tex.in_mathzone }
-  ),
-  -- DERIVATIVE with numerator and denominator
-  s(
-    { trig = '([^%a])dvv', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>\\dv{<>}{<>}', {
+    { trig = '([^%a%\\])mee', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
+    fmta('<>\\exp\\left({<>}\\right)', {
       f(function(_, snip)
         return snip.captures[1]
       end),
       i(1),
-      i(2),
-    }),
-    { condition = tex.in_mathzone }
-  ),
-  -- DERIVATIVE with numerator, denominator, and higher-order argument
-  s(
-    { trig = '([^%a])ddv', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>\\dvN{<>}{<>}{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      i(1),
-      i(2),
-      i(3),
-    }),
-    { condition = tex.in_mathzone }
-  ),
-  -- PARTIAL DERIVATIVE with denominator only
-  s(
-    { trig = '([^%a])pV', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>\\pdvOne{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      d(1, get_visual),
-    }),
-    { condition = tex.in_mathzone }
-  ),
-  -- PARTIAL DERIVATIVE with numerator and denominator
-  s(
-    { trig = '([^%a])pvv', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>\\pdv{<>}{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      i(1),
-      i(2),
-    }),
-    { condition = tex.in_mathzone }
-  ),
-  -- PARTIAL DERIVATIVE with numerator, denominator, and higher-order argument
-  s(
-    { trig = '([^%a])ppv', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>\\pdvN{<>}{<>}{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      i(1),
-      i(2),
-      i(3),
     }),
     { condition = tex.in_mathzone }
   ),
@@ -397,14 +295,8 @@ return {
   -- BEGIN STATIC SNIPPETS
   --
 
-  -- DIFFERENTIAL, i.e. \diff
-  s({ trig = 'df', snippetType = 'autosnippet', priority = 2000, snippetType = 'snippet' }, {
-    t '\\diff',
-  }, { condition = tex.in_mathzone }),
   -- BASIC INTEGRAL SYMBOL, i.e. \int
-  s({ trig = 'in1', snippetType = 'autosnippet' }, {
-    t '\\int',
-  }, { condition = tex.in_mathzone }),
+  s({ trig = 'in1', snippetType = 'autosnippet' }, { t '\\int' }, { condition = tex.in_mathzone }),
   -- DOUBLE INTEGRAL, i.e. \iint
   s({ trig = 'in2', snippetType = 'autosnippet' }, {
     t '\\iint',
@@ -437,10 +329,6 @@ return {
   s({ trig = 'laa', snippetType = 'autosnippet' }, {
     t '\\laplacian ',
   }, { condition = tex.in_mathzone }),
-  -- PARALLEL SYMBOL, i.e. \parallel
-  s({ trig = '||', snippetType = 'autosnippet' }, {
-    t '\\parallel',
-  }),
   -- CDOTS, i.e. \cdots
   s({ trig = 'cdd', snippetType = 'autosnippet' }, {
     t '\\cdots',
@@ -461,14 +349,6 @@ return {
   s({ trig = 'sbb', snippetType = 'autosnippet' }, {
     t '\\subset ',
   }),
-  -- APPROX, i.e. \approx
-  s({ trig = 'px', snippetType = 'autosnippet' }, {
-    t '\\approx ',
-  }, { condition = tex.in_mathzone }),
-  -- PROPTO, i.e. \propto
-  s({ trig = 'pt', snippetType = 'autosnippet' }, {
-    t '\\propto ',
-  }, { condition = tex.in_mathzone }),
   -- COLON, i.e. \colon
   s({ trig = '::', snippetType = 'autosnippet' }, {
     t '\\colon ',
@@ -484,5 +364,7 @@ return {
   -- CROSS PRODUCT, i.e. \times
   s({ trig = 'xx', snippetType = 'autosnippet' }, {
     t '\\times ',
+  }, {
+    condition = tex.in_mathzone(),
   }),
 }
