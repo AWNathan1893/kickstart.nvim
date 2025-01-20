@@ -16,7 +16,7 @@ local line_begin = require('luasnip.extras.expand_conditions').line_begin
 return {
   -- GENERIC ENVIRONMENT
   s(
-    { trig = 'new', snippetType = 'snippet' },
+    { trig = 'beg', snippetType = 'autosnippet' },
     fmta(
       [[
         \begin{<>}
@@ -33,7 +33,7 @@ return {
   ),
   -- ENVIRONMENT WITH ONE EXTRA ARGUMENT
   s(
-    { trig = 'n2', snippetType = 'snippet' },
+    { trig = 'beg2', snippetType = 'autosnippet' },
     fmta(
       [[
         \begin{<>}{<>}
@@ -51,7 +51,7 @@ return {
   ),
   -- ENVIRONMENT WITH TWO EXTRA ARGUMENTS
   s(
-    { trig = 'n3', snippetType = 'snippet' },
+    { trig = 'beg3', snippetType = 'autosnippet' },
     fmta(
       [[
         \begin{<>}{<>}{<>}
@@ -68,26 +68,9 @@ return {
     ),
     { condition = line_begin }
   ),
-  -- TOPIC ENVIRONMENT (my custom tcbtheorem environment)
-  s(
-    { trig = 'nt', snippetType = 'snippet' },
-    fmta(
-      [[
-        \begin{topic}{<>}{<>}
-            <>
-        \end{topic}
-      ]],
-      {
-        i(1),
-        i(2),
-        d(3, get_visual),
-      }
-    ),
-    { condition = line_begin }
-  ),
   -- EQUATION
   s(
-    { trig = 'nn', snippetType = 'snippet' },
+    { trig = 'nn', snippetType = 'autosnippet' },
     fmta(
       [[
         \begin{equation*}
@@ -102,7 +85,7 @@ return {
   ),
   -- SPLIT EQUATION
   s(
-    { trig = 'ss', snippetType = 'snippet' },
+    { trig = 'ss', snippetType = 'autosnippet' },
     fmta(
       [[
         \begin{equation*}
@@ -119,7 +102,7 @@ return {
   ),
   -- ALIGN
   s(
-    { trig = 'all', snippetType = 'snippet' },
+    { trig = 'al', snippetType = 'autosnippet' },
     fmta(
       [[
         \begin{align*}
@@ -134,14 +117,14 @@ return {
   ),
   -- ITEMIZE
   s(
-    { trig = 'itt', snippetType = 'snippet' },
+    { trig = 'ul', snippetType = 'autosnippet' },
     fmta(
       [[
-        \begin{itemize}
+        \begin{enumerate}[label=\(\bullet\)]
 
             \item <>
 
-        \end{itemize}
+        \end{enumerate}
       ]],
       {
         i(0),
@@ -151,24 +134,25 @@ return {
   ),
   -- ENUMERATE
   s(
-    { trig = 'enn', snippetType = 'snippet' },
+    { trig = 'ol', snippetType = 'autosnippet' },
     fmta(
       [[
-        \begin{enumerate}
+        \begin{enumerate}[label=<>]
 
             \item <>
 
         \end{enumerate}
       ]],
       {
+        i(1),
         i(0),
       }
     )
   ),
   -- INLINE MATH
   s(
-    { trig = '([^%l])mm', regTrig = true, wordTrig = false, snippetType = 'snippet' },
-    fmta('<>$<>$', {
+    { trig = '([^%l])im', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('<>\\( <> \\)', {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -177,10 +161,18 @@ return {
   ),
   -- INLINE MATH ON NEW LINE
   s(
-    { trig = '^mm', regTrig = true, wordTrig = false, snippetType = 'snippet' },
-    fmta('$<>$', {
+    { trig = '^im', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('\\( <> \\)', {
       i(1),
     })
+  ),
+  -- DISPLAY MATH ON NEW LINE
+  s(
+    { trig = 'dm', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('\\[ <> \\]', {
+      i(1),
+    }),
+    { condition = line_begin }
   ),
   -- FIGURE
   s(
