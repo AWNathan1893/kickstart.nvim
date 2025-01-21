@@ -178,4 +178,26 @@ return {
     ),
     { condition = line_begin }
   ),
+  -- PROBLEM AND SOLUTION
+  s(
+    { trig = 'psol', snippetType = 'autosnippet' },
+    fmta(
+      [=[
+        \begin{problem}
+        <>
+        \end{problem}
+
+        \begin{soln}
+        <>
+        \end{soln}
+          ]=],
+      {
+        f(function(_, snip)
+          return snip.captures[1]
+        end),
+        d(1, get_visual),
+      }
+    ),
+    { condition = line_begin }
+  ),
 }

@@ -179,6 +179,40 @@ return {
     }),
     { condition = tex.in_mathzone }
   ),
+  -- INNER PRODUCT
+  s(
+    { trig = '([^%a])inp', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
+    fmta('<>\\left\\langle {<>},{<>} \\right\\rangle', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      d(1, get_visual),
+      i(2),
+    }),
+    { condition = tex.in_mathzone }
+  ),
+  -- FLOOR
+  s(
+    { trig = '([^%a])fl', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('<>\\left\\lfloor <> \\right\\rfloor', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      d(1, get_visual),
+    }),
+    { condition = tex.in_mathzone }
+  ),
+  -- CEIL
+  s(
+    { trig = '([^%a])ce', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('<>\\left\\lceil <> \\right\\rceil', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      d(1, get_visual),
+    }),
+    { condition = tex.in_mathzone }
+  ),
   -- ABSOLUTE VALUE
   s(
     { trig = '([^%a])aa', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
@@ -291,6 +325,12 @@ return {
     }),
     { condition = tex.in_mathzone }
   ),
+  -- OVERLINE
+  s({ trig = 'ovl', snippetType = 'autosnippet' }, fmta('\\overline{<>}', { i(1) }), { condition = tex.in_mathzone }),
+  -- TILDE
+  s({ trig = 'ovt', snippetType = 'autosnippet' }, fmta('\\widetilde{<>}', { i(1) }), { condition = tex.in_mathzone }),
+  -- HAT
+  s({ trig = 'ovh', snippetType = 'autosnippet' }, fmta('\\widehat{<>}', { i(1) }), { condition = tex.in_mathzone }),
   --
   -- BEGIN STATIC SNIPPETS
   --
@@ -364,6 +404,24 @@ return {
   -- CROSS PRODUCT, i.e. \times
   s({ trig = 'xx', snippetType = 'autosnippet' }, {
     t '\\times ',
+  }, {
+    condition = tex.in_mathzone(),
+  }),
+  -- MAPSTO
+  s({ trig = ';mt', snippettype = 'autosnippet' }, {
+    t '\\mapsto ',
+  }, {
+    condition = tex.in_mathzone(),
+  }),
+  -- CONTRADICTION
+  s({ trig = 'cqed', snippettype = 'autosnippet' }, {
+    t '\\hfill \\rightarrow \\leftarrow',
+  }, {
+    condition = tex.in_mathzone(),
+  }),
+  -- PROOF END
+  s({ trig = 'qed', snippettype = 'autosnippet' }, {
+    t '\\hfill \\blacksquare',
   }, {
     condition = tex.in_mathzone(),
   }),

@@ -123,4 +123,39 @@ return {
     }),
     { condition = tex.in_mathzone }
   ),
+  -- OPERATORS
+  s(
+    { trig = '([^%a])mop', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('<>\\operatorname{<>}', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+      d(1, get_visual),
+    }),
+    { condition = tex.in_mathzone }
+  ),
+  -- RATIONALS
+  s({ trig = 'mqq', snippetType = 'autosnippet' }, { t '\\mathbbm{Q}' }, { condition = tex.in_mathzone }),
+  -- REALS
+  s({ trig = 'mrr', snippetType = 'autosnippet' }, { t '\\mathbbm{R}' }, { condition = tex.in_mathzone }),
+  -- COMPLEX
+  s({ trig = 'mcz', snippetType = 'autosnippet' }, { t '\\mathbbm{C}' }, { condition = tex.in_mathzone }),
+  -- INTEGERS
+  s({ trig = 'mzz', snippetType = 'autosnippet' }, { t '\\mathbbm{Z}' }, { condition = tex.in_mathzone }),
+  -- SPHERES
+  s(
+    { trig = 'mss', snippetType = 'autosnippet' },
+    fmta('\\mathbbm{S}^{<>}', {
+      i(1, 'n'),
+    }),
+    { condition = tex.in_mathzone }
+  ),
+  -- HYPERBOLIC SPACE
+  s(
+    { trig = 'mhh', snippetType = 'autosnippet' },
+    fmta('\\mathbbm{H}^{<>}', {
+      i(1, 'n'),
+    }),
+    { condition = tex.in_mathzone }
+  ),
 }

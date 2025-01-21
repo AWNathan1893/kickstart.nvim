@@ -24,28 +24,25 @@ return {
   s({ trig = 'qq', snippetType = 'snippet' }, {
     t '\\qquad ',
   }),
-  s({ trig = 'npp', snippetType = 'snippet' }, {
-    t { '\\newpage', '' },
+  s({ trig = 'pbrk', snippetType = 'autosnippet' }, {
+    t { '\\pagebreak', '' },
   }, { condition = line_begin }),
   s({ trig = 'which', snippetType = 'snippet' }, {
     t '\\text{ for which } ',
   }, { condition = tex.in_mathzone }),
-  s({ trig = 'all', snippetType = 'snippet' }, {
-    t '\\text{ for all } ',
-  }, { condition = tex.in_mathzone }),
   s({ trig = 'and', snippetType = 'snippet' }, {
     t '\\quad \\text{and} \\quad',
   }, { condition = tex.in_mathzone }),
-  s({ trig = 'forall', snippetType = 'snippet' }, {
+  s({ trig = 'forall', snippetType = 'autosnippet' }, {
     t '\\text{ for all } ',
   }, { condition = tex.in_mathzone }),
-  s({ trig = 'toc', snippetType = 'snippet' }, {
+  s({ trig = 'toc', snippetType = 'autosnippet' }, {
     t '\\tableofcontents',
   }, { condition = line_begin }),
-  s({ trig = 'inff', snippetType = 'snippet' }, {
+  s({ trig = ';8', snippetType = 'autosnippet' }, {
     t '\\infty',
   }),
-  s({ trig = 'ii', snippetType = 'snippet' }, {
+  s({ trig = '([^%a])ii', snippetType = 'autosnippet' }, {
     t '\\item ',
   }, { condition = line_begin }),
   s({ trig = '--', snippetType = 'snippet' }, { t '% --------------------------------------------- %' }, { condition = line_begin }),
