@@ -369,11 +369,13 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      require('telescope').load_extension 'luasnip'
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+      vim.keymap.set('n', '<leader>sl', builtin.keymaps, { desc = '[S]earch [L]uasnip Keymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
@@ -884,7 +886,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
@@ -893,7 +895,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -916,28 +918,7 @@ require('lazy').setup({
   },
 })
 
--- LuaSnip
-
--- require('luasnip').config.set_config { -- Setting LuaSnip config
---
---   -- Enable autotriggered snippets
---   enable_autosnippets = true,
---
---   -- Use Tab (or some other key if you prefer) to trigger visual selection
---   store_selection_keys = '<Tab>',
---
---   -- For repeated insert nodes to be updated simultaneously
---   update_events = 'TextChanged, TextChangedI',
--- }
---
--- require('luasnip.loaders.from_lua').lazy_load { paths = '~/.config/nvim/LuaSnip/' }
---
--- -- Keymap to lazy load snippets, so that snippets can be changed while working on files.
---
--- vim.keymap.set('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})<CR>')
---
-
-require 'plugins/LuaSnip'
+require 'plugins/LuaSnip' -- LuaSnip
 
 -- Disable Treesitter highlighting for tex files, Vimtex will handle that
 

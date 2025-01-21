@@ -16,7 +16,7 @@ let g:vimtex_mappings_enabled = 0
 " let g:vimtex_imaps_enabled = 0
 
 " Disable completion
-" let g:vimtex_complete_enabled = 0
+let g:vimtex_complete_enabled = 0
 
 " Disable syntax conceal
 let g:vimtex_syntax_conceal_disable = 1  
@@ -52,6 +52,7 @@ let g:vimtex_quickfix_ignore_filters = [
 "   echom "Error: LaTeX forward show not supported on this OS"
 " endif
 
+let g:vimtex_view_method = 'sioyek'
 " Don't automatically open PDF viewer after first compilation
 " let g:vimtex_view_automatic = 0
 

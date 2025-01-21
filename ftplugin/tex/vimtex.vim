@@ -9,9 +9,9 @@ if exists("b:did_myvimtexsettings")
 endif
 let b:did_myvimtexsettings = 1
 
-nmap <leader>i <plug>(vimtex-info)
+" nmap <leader>i <plug>(vimtex-info)
 
-nmap <leader>t <CMD>VimtexTocToggle<CR>
+nmap <leader>t <CMD>VimtexTocToggle<CR> " Table of Contents
 
 " Toggle shell escape on an off when using minted package
 " ---------------------------------------------
@@ -40,19 +40,79 @@ nmap <leader>t <CMD>VimtexTocToggle<CR>
 " endif
 " ---------------------------------------------
 
-" Close viewers when VimTeX buffers are closed (see :help vimtex-events)
-function! CloseViewers()
-  if executable('xdotool')
-        \ && exists('b:vimtex.viewer.xwin_id')
-        \ && b:vimtex.viewer.xwin_id > 0
-    call system('xdotool windowclose '. b:vimtex.viewer.xwin_id)
-  endif
-endfunction
+" The following events are all taken from :h vimtex-events
+" Compile on initialization, cleanup on stopping compilation
+  augroup vimtex_event_1
+    autocmd!
+    autocmd User VimtexEventCompileStopped     VimtexClean
+    autocmd User VimtexEventInitPost VimtexCompile
+  augroup END
 
-augroup vimtex_event_close
-  au!
-  au User VimtexEventQuit call CloseViewers()
-augroup END
+  " Close viewers when VimTeX buffers are closed
+  function! CloseViewers()
+    if executable('xdotool')
+          \ && exists('b:vimtex.viewer.xwin_id')
+          \ && b:vimtex.viewer.xwin_id > 0
+      call system('xdotool windowclose '. b:vimtex.viewer.xwin_id)
+    endif
+  endfunction
+
+  augroup vimtex_event_2
+    autocmd!
+    autocmd User VimtexEventQuit call CloseViewers()
+  augroup END
+
+  " " Add custom mappings in ToC buffer
+  " function! TocMappings()
+  "   " You probably don't want to do this, though...
+  "   nnoremap <silent><buffer><nowait> q :quitall!
+  " endfunction
+  "
+  " augroup vimtex_event_3
+  "   autocmd!
+  "   autocmd User VimtexEventTocCreated call TocMappings()
+  " augroup END
+
+  " Specify window position when opening ToC entries
+  augroup vimtex_event_4
+    autocmd!
+    autocmd User VimtexEventTocActivated normal! zt
+  augroup END
+
+  function! CenterAndFlash() abort
+    " Close all folds, then open only the folds at cursor position, then
+    " center the cursor in window.
+    normal! zMzvzz
+
+    let save_cursorline_state = &cursorline
+
+    " Add simple flashing effect, see
+    " * https://vi.stackexchange.com/a/3481/29697
+    " * https://stackoverflow.com/a/33775128/38281
+    for i in range(1, 3)
+      set cursorline
+      redraw
+      sleep 200m
+      set nocursorline
+      redraw
+      sleep 200m
+    endfor
+
+    let &cursorline = save_cursorline_state
+  endfunction
+
+  " Specify additional behaviour after inverse search
+  augroup vimtex_event_5
+    autocmd!
+    autocmd User VimtexEventViewReverse call CenterAndFlash()
+  augroup END
+
+  " Focus the terminal after inverse search
+  augroup vimtex_event_6
+    autocmd!
+    autocmd User VimtexEventViewReverse call b:vimtex.viewer.xdo_focus_vim()
+  augroup END
+" ---------------------------------------------
 
 " DEFINE MAPPINGS
 " ---------------------------------------------
@@ -72,6 +132,8 @@ nmap tsD <plug>(vimtex-delim-toggle-modifier-reverse)
 nmap tsm <plug>(vimtex-env-toggle-math)
 imap ]] <plug>(vimtex-delim-close)
 imap <buffer> <f7> <plug>(vimtex-cmd-create)}<left>
+nmap <localleader>c <plug>(vimtex-compile)
+nmap <localleader>v <plug>(vimtex-view)
 
 " Text objects in operator-pending mode
 omap ac <plug>(vimtex-ac)
