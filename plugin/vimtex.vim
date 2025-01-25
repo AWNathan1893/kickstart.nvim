@@ -53,8 +53,9 @@ let g:vimtex_quickfix_ignore_filters = [
 " endif
 
 let g:vimtex_view_method = 'sioyek'
+
 " Don't automatically open PDF viewer after first compilation
-" let g:vimtex_view_automatic = 0
+let g:vimtex_view_automatic = 0
 
 " Disable continuous compilation
 " let g:vimtex_compiler_latexmk = {
