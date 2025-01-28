@@ -33,7 +33,7 @@ return {
   s({ trig = 'and', snippetType = 'snippet' }, {
     t '\\quad \\text{and} \\quad',
   }, { condition = tex.in_mathzone }),
-  s({ trig = 'forall', snippetType = 'autosnippet' }, {
+  s({ trig = 'uall', snippetType = 'autosnippet' }, {
     t '\\text{ for all } ',
   }, { condition = tex.in_mathzone }),
   s({ trig = 'toc', snippetType = 'autosnippet' }, {
