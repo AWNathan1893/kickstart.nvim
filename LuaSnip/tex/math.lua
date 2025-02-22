@@ -14,7 +14,7 @@ end
 return {
   -- SUPERSCRIPT
   s(
-    { trig = "([%w%)%]%}])'", wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
+    { trig = '([%w%)%]%}]):', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
     fmta('<>^{<>}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -226,7 +226,7 @@ return {
   ),
   -- SQUARE ROOT
   s(
-    { trig = '([^%\\])sq', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
+    { trig = '([^%a])sq', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
     fmta('<>\\sqrt{<>}', {
       f(function(_, snip)
         return snip.captures[1]
