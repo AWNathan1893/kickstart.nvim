@@ -134,7 +134,7 @@ return {
   ),
   -- INLINE MATH
   s(
-    { trig = '([^%l])im', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    { trig = '([^%l])mm', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>\\( <> \\)', {
       f(function(_, snip)
         return snip.captures[1]
@@ -144,7 +144,7 @@ return {
   ),
   -- INLINE MATH ON NEW LINE
   s(
-    { trig = '^im', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    { trig = '^mm', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('\\( <> \\)', {
       i(1),
     })
@@ -152,9 +152,16 @@ return {
   -- DISPLAY MATH ON NEW LINE
   s(
     { trig = 'dm', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
-    fmta('\\[ <> \\]', {
-      i(1),
-    }),
+    fmta(
+      [[
+      \[
+          <>
+      \]
+      ]],
+      {
+        i(1),
+      }
+    ),
     { condition = line_begin }
   ),
   -- FIGURE
