@@ -292,15 +292,14 @@ return {
     }),
     { condition = tex.in_mathzone }
   ),
-  -- INTEGRAL with upper and lower limit
+  -- INTEGRAL with lower limit
   s(
     { trig = '([^%a])intt', wordTrig = false, regTrig = true, snippetType = 'autosnippet' },
-    fmta('<>\\int_{<>}^{<>}', {
+    fmta('<>\\int_{<>}', {
       f(function(_, snip)
         return snip.captures[1]
       end),
       i(1),
-      i(2),
     }),
     { condition = tex.in_mathzone }
   ),
