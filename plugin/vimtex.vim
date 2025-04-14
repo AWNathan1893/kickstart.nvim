@@ -6,6 +6,10 @@
 
 " Adapted from @ejmastnak's dotfiles: https://github.com/ejmastnak/dotfiles/blob/main/config/nvim/plugin/vimtex.vim
 
+" Folding
+let g:vimtex_fold_enabled = 1
+let g:vimtex_fold_manual = 1
+
 " Turn off VimTeX indentation
 " let g:vimtex_indent_enabled = 0
 
