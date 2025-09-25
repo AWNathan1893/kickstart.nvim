@@ -33,7 +33,7 @@ return {
   ),
   -- ENVIRONMENT WITH ONE EXTRA ARGUMENT
   s(
-    { trig = 'beg2', snippetType = 'autosnippet' },
+    { trig = 'bg2', snippetType = 'autosnippet' },
     fmta(
       [[
         \begin{<>}{<>}
@@ -51,7 +51,7 @@ return {
   ),
   -- ENVIRONMENT WITH TWO EXTRA ARGUMENTS
   s(
-    { trig = 'beg3', snippetType = 'autosnippet' },
+    { trig = 'bgg', snippetType = 'autosnippet' },
     fmta(
       [[
         \begin{<>}{<>}{<>}
@@ -203,6 +203,22 @@ return {
           return snip.captures[1]
         end),
         d(1, get_visual),
+      }
+    ),
+    { condition = line_begin }
+  ),
+  -- FRAME
+  s(
+    { trig = 'frm', snippetType = 'autosnippet' },
+    fmta(
+      [=[
+        \begin{frame}{<>}
+        <>
+        \end{frame}
+          ]=],
+      {
+        i(1),
+        i(2),
       }
     ),
     { condition = line_begin }
